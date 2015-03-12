@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/ChimeraCoder/anaconda"
@@ -17,10 +18,11 @@ func initTwitter() error {
 		"ACCESS_TOKEN_SECRET",
 	}
 	for i, v := range envs {
-		if v == "" {
+		envs[i] = os.Getenv(v)
+		if envs[i] == "" {
 			return fmt.Errorf("Enviroment \"%s\" is not set.", v)
 		}
-		envs[i] = os.Getenv(v)
+		log.Printf("Set env \"%v\"", v)
 	}
 	anaconda.SetConsumerKey(envs[0])
 	anaconda.SetConsumerSecret(envs[1])
