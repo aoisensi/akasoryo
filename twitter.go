@@ -30,7 +30,9 @@ func initTwitter() error {
 	return nil
 }
 
-func tweet(text string) error {
+func tweet(text string) {
 	_, err := twitter.PostTweet(text, nil)
-	return err
+	if err != nil {
+		log.Fatal(err)
+	}
 }

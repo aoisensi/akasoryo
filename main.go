@@ -46,7 +46,7 @@ func getText(key string) string {
 }
 
 func textf(key string, a ...interface{}) string {
-	return fmt.Sprintf(getText(key), a)
+	return fmt.Sprintf(getText(key), a...)
 }
 
 func nowJST() time.Time {
